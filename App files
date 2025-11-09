@@ -18,8 +18,11 @@ DEFAULT_TEMPLATES = {
     "specials": {"nurse": ["Hi {NAME}! Re: the nurse — image or text-only?"]}
 }
 
-def pick(lst): return lst[0] if lst else ""
-def render(t, **kw): return t.format(**kw)
+def pick(lst): 
+    return lst[0] if lst else ""
+
+def render(t, **kw): 
+    return t.format(**kw)
 
 def is_spam(t: str) -> bool:
     t = t.lower().strip()
@@ -45,6 +48,4 @@ def reply(msg: Message):
     if any(word in t for word in ["hi", "hello", "hey", "yo"]):
         return {"reply": render(pick(DEFAULT_TEMPLATES["welcome"]["warm"]), NAME=msg.name, BRAND_NAME=BRAND_NAME)}
 
-    return {"reply": render(pick(DEFAULT_TEMPLATES["probe"]["pro"])
-
-				requirements 
+    return {"reply": render(pick(DEFAULT_TEMPLATES["probe"]["pro"]), NAME=msg.name
