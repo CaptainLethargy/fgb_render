@@ -1,12 +1,9 @@
+rootDirectory  App files
 services:
   - type: web
     name: fgb-render
     env: python
     plan: free
+    rootDirectory: App files      # 👈 tells Render where main.py lives
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
-    envVars:
-      - key: BRAND_NAME
-        value: Captain Lethargy
-      - key: NURSE_MEDIA_URL
-        value: ""
