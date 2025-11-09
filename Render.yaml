@@ -1,9 +1,6 @@
-rootDirectory  App files
 services:
   - type: web
-    name: fgb-render
+    name: fgb_render
     env: python
-    plan: free
-    rootDirectory: App files      # 👈 tells Render where main.py lives
     buildCommand: pip install -r requirements.txt
-    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    startCommand: uvicorn follower_greeter_bot.main:app --host 0.0.0.0 --port $PORT
