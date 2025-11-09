@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: fgb-render
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: BRAND_NAME
+        value: Captain Lethargy
+      - key: NURSE_MEDIA_URL
+        value: ""
