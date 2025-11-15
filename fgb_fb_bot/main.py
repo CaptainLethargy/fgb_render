@@ -185,8 +185,9 @@ async def reply(msg: Message, request: Request):
         "platform": platform,
         "manual_required": manual_required,
     }
-    
-    @app.get("/test-nurse")
+
+
+@app.get("/test-nurse")
 async def test_nurse(request: Request):
     """
     Simple GET test endpoint so Keith can hit it from Safari.
