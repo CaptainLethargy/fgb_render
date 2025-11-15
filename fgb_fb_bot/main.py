@@ -185,3 +185,27 @@ async def reply(msg: Message, request: Request):
         "platform": platform,
         "manual_required": manual_required,
     }
+    
+    @app.get("/test-nurse")
+async def test_nurse(request: Request):
+    """
+    Simple GET test endpoint so Keith can hit it from Safari.
+    Pretends a follower called 'Keith' sent the word 'nurse'.
+    """
+    msg = Message(name="Keith", text="nurse")
+    platform = detect_platform(request.headers)
+    manual_required = needs_manual_reply(msg.text)
+
+    reply_text = nurse_greeting(msg.name)
+
+    return {
+        "reply": reply_text,
+        "platform": platform,
+        "manual_required": manual_required,
+        "nurse_images": {
+            "main": NURSE_MEDIA_URL,
+            "curtain": NURSE_CURTAIN_URL,
+            "bed": NURSE_BED_URL,
+            "nil_by_mouth": NURSE_NIL_URL,
+        },
+    }
