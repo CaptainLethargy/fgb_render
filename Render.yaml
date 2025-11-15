@@ -3,4 +3,4 @@ services:
     name: fgb_render
     env: python
     buildCommand: pip install -r requirements.txt
-      startCommand: uvicorn fgb_fb_bot.main:app --host 0.0.0.0 --port $PORT
+    startCommand: uvicorn fgb_fb_bot.main:app --host 0.0.0.0 --port $PORT
