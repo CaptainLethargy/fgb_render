@@ -1,0 +1,1 @@
+this project is to provide an answer bot with a difference, on answering, the caller receives an image of a nurse, sees a hospital bed with a Nil By Mouth notice before being told by the nurse the patient isnt available so please leave a message/
