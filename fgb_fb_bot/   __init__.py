@@ -1,4 +1,5 @@
 fgb_render/
+└── fgb_fb_static/
  └── fgb_fb_bot/
        ├── __init__.py
        ├── main.py
