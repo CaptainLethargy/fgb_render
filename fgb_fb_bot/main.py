@@ -83,6 +83,16 @@ app = FastAPI(title="Follower Greeter Bot", version="0.1.1-nurse")
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_DIR = BASE_DIR / "static"
 
+@app.get("/debug-static")
+def debug_static():
+    try:
+        files = os.listdir(STATIC_DIR)
+        return {"static_dir": str(STATIC_DIR), "files": files}
+    except Exception as e:
+        return JSONResponse(
+            status_code=500,
+            content={"error": str(e)}
+        )
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 
 BRAND_NAME = os.getenv("BRAND_NAME", "Captain Lethargy")
