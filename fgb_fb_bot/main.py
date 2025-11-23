@@ -1,6 +1,7 @@
 import os
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
+from fastapi.staticfiles import StaticFiles
 
 # ------------------------------------------------------
 # Helper functions
