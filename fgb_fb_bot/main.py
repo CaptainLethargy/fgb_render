@@ -1,5 +1,6 @@
 import os
 from fastapi import FastAPI, Request
+app.mount("/static", StaticFiles(directory="static"), name="static")
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
 
