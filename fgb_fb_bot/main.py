@@ -1,6 +1,5 @@
 import os
 from fastapi import FastAPI, Request
-app.mount("/static", StaticFiles(directory="static"), name="static")
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
 
@@ -77,6 +76,7 @@ def is_spam(t: str) -> bool:
 # ------------------------------------------------------
 
 app = FastAPI(title="Follower Greeter Bot", version="0.1.1-nurse")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 BRAND_NAME = os.getenv("BRAND_NAME", "Captain Lethargy")
 
