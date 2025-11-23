@@ -76,7 +76,7 @@ def is_spam(t: str) -> bool:
 # ------------------------------------------------------
 
 app = FastAPI(title="Follower Greeter Bot", version="0.1.1-nurse")
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="../static"), name="static")
 
 BRAND_NAME = os.getenv("BRAND_NAME", "Captain Lethargy")
 
