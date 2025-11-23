@@ -1,5 +1,6 @@
 import os
-from fastapi import FastAPI, Request import JSONResponse
+from pathlib import Path
+from fastapi import FastAPI, Request
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
 
@@ -72,28 +73,20 @@ def is_spam(t: str) -> bool:
 
 
 # ------------------------------------------------------
-# App + config
+# App + static config
 # ------------------------------------------------------
 
 app = FastAPI(title="Follower Greeter Bot", version="0.1.1-nurse")
-from pathlib import Path
 
-app = FastAPI(title="Follower Greeter Bot", version="0.1.1-nurse")
+BASE_DIR = Path(__file__).resolve().parent.parent  # /opt/render/project/src
+STATIC_DIR = BASE_DIR / "static"                   # /opt/render/project/src/static
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-STATIC_DIR = BASE_DIR / "static"
-
-@app.get("/debug-static")
-def debug_static():
-    try:
-        files = os.listdir(STATIC_DIR)
-        return {"static_dir": str(STATIC_DIR), "files": files}
-    except Exception as e:
-        return JSONResponse(
-            status_code=500,
-            content={"error": str(e)}
-        )
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+
+
+# ------------------------------------------------------
+# Environment + models + templates
+# ------------------------------------------------------
 
 BRAND_NAME = os.getenv("BRAND_NAME", "Captain Lethargy")
 
